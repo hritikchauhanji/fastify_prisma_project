@@ -11,11 +11,19 @@
     "type": "git",
     "url": "git+https://github.com/hritikchauhanji/fastify_prisma_project.git"
   },
-  "keywords": ["Backend", "Fastify", "Prisma", "Nodejs"],
+  "keywords": [
+    "Backend",
+    "Fastify",
+    "Prisma",
+    "Nodejs"
+  ],
   "author": "Hritik Chauhan",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/hritikchauhanji/fastify_prisma_project/issues"
   },
-  "homepage": "https://github.com/hritikchauhanji/fastify_prisma_project#readme"
+  "homepage": "https://github.com/hritikchauhanji/fastify_prisma_project#readme",
+  "dependencies": {
+    "fastify": "^5.7.1"
+  }
 }
