@@ -7,10 +7,10 @@ This project follows a **clean layered architecture** (routes → controller →
 
 ## Tech Stack
 
-- **Fastify** – High-performance Node.js backend framework  
-- **Prisma ORM** – Type-safe database access  
-- **PostgreSQL** – Relational database  
-- **Swagger (OpenAPI)** – API documentation  
+- **Fastify** – High-performance Node.js backend framework
+- **Prisma ORM** – Type-safe database access
+- **PostgreSQL** – Relational database
+- **Swagger (OpenAPI)** – API documentation
 
 ---
 
@@ -60,28 +60,40 @@ prisma/
 ## Setup & Installation
 
 ### Clone the repository
+
 ```bash
 git clone <your-repo-url>
 cd fastify-prisma-project
 ```
 
 ### Install dependencies
+
 ```bash
 npm install
 ```
 
 ### Create `.env` file
+
 ```env
 PORT=3000
+NODE_ENV=development
 DATABASE_URL=postgresql://username:password@host:port/database?sslmode=require
 ```
 
 ### Run Prisma migration
+
 ```bash
 npx prisma migrate dev
 ```
 
+### Run Prisma Studio
+
+```bash
+npx prisma studio
+```
+
 ### Start the server
+
 ```bash
 node src/server.js or npm run dev
 ```
@@ -97,6 +109,7 @@ http://localhost:3000/docs
 ```
 
 You can:
+
 - View all endpoints
 - See request/response schemas
 - Test APIs directly from the browser
@@ -107,40 +120,32 @@ You can:
 
 ### User APIs
 
-| Method | Endpoint        | Description |
-|------|----------------|------------|
-| POST | `/users`        | Create user |
-| GET  | `/users`        | Get users (pagination + search) |
-| GET  | `/users/:id`    | Get user by ID |
-| PUT  | `/users/:id`    | Update user |
-| DELETE | `/users/:id`  | Soft delete user |
+| Method | Endpoint     | Description                     |
+| ------ | ------------ | ------------------------------- |
+| POST   | `/users`     | Create user                     |
+| GET    | `/users`     | Get users (pagination + search) |
+| GET    | `/users/:id` | Get user by ID                  |
+| PUT    | `/users/:id` | Update user                     |
+| DELETE | `/users/:id` | Soft delete user                |
 
 ---
 
 ## Architecture Explanation (Interview Ready)
 
-- **Routes** → define HTTP endpoints & validation  
-- **Controller** → handles request/response  
-- **Service** → contains business logic  
-- **Repository** → database interaction using Prisma  
-- **Middleware** → centralized error handling  
+- **Routes** → define HTTP endpoints & validation
+- **Controller** → handles request/response
+- **Service** → contains business logic
+- **Repository** → database interaction using Prisma
+- **Middleware** → centralized error handling
 
 This separation makes the code **maintainable, testable, and scalable**.
-
----
-
-## Status
-
-✔ Production-ready  
-✔ Portfolio-ready  
-✔ Interview-ready  
 
 ---
 
 ## Author
 
 **Hritik Chauhan**  
-Backend Developer | Fastify | Prisma | PostgreSQL  
+Backend Developer | Fastify | Prisma | PostgreSQL
 
 ---
 
