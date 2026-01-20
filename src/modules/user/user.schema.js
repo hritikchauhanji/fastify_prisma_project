@@ -20,4 +20,14 @@ const getUsersSchema = {
   },
 };
 
-export { createUserSchema, getUsersSchema };
+const getUserByIdSchema = {
+  params: {
+    type: "object",
+    required: ["id"],
+    properties: {
+      id: { type: "integer", minimum: 1 },
+    },
+  },
+};
+
+export { createUserSchema, getUsersSchema, getUserByIdSchema };

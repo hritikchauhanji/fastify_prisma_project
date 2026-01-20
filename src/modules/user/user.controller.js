@@ -31,6 +31,16 @@ class UserController {
       },
     });
   };
+
+  getUserById = async (request, reply) => {
+    const id = Number(request.params.id);
+    const user = await this.userService.getUserById(id);
+
+    reply.send({
+      success: true,
+      data: user,
+    });
+  };
 }
 
 export { UserController };

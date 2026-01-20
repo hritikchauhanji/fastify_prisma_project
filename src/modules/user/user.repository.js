@@ -30,6 +30,15 @@ class UserRepository {
 
     return { items, total };
   }
+
+  async findById(id) {
+    return this.prisma.user.findFirst({
+      where: {
+        id,
+        isDeleted: false,
+      },
+    });
+  }
 }
 
 export { UserRepository };
