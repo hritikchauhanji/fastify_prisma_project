@@ -55,6 +55,13 @@ class UserRepository {
       },
     });
   }
+
+  async softDeleteById(id) {
+    return this.prisma.user.update({
+      where: { id },
+      data: { isDeleted: true },
+    });
+  }
 }
 
 export { UserRepository };

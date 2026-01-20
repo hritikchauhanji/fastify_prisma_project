@@ -51,6 +51,20 @@ class UserController {
       message: "User updated successfully",
     });
   };
+
+  deleteUser = async (request, reply) => {
+    const id = Number(request.params.id);
+    const result = await this.userService.deleteUser(id);
+
+    if (!result) {
+      return reply.code(204).send();
+    }
+
+    reply.code(204).send({
+      success: true,
+      message: "User deleted successfully",
+    });
+  };
 }
 
 export { UserController };

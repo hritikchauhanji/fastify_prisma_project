@@ -49,9 +49,20 @@ const updateUserSchema = {
   },
 };
 
+const deleteUserSchema = {
+  params: {
+    type: "object",
+    required: ["id"],
+    properties: {
+      id: { type: "integer", minimum: 1 },
+    },
+  },
+};
+
 export {
   createUserSchema,
   getUsersSchema,
   getUserByIdSchema,
   updateUserSchema,
+  deleteUserSchema,
 };

@@ -1,3 +1,5 @@
+import { ApiError } from "../../utils/api-error.js";
+
 class UserService {
   constructor(userRepository) {
     this.userRepository = userRepository;
@@ -15,9 +17,7 @@ class UserService {
   async getUserById(id) {
     const user = await this.userRepository.findById(id);
     if (!user) {
-      const error = new Error("User not found");
-      error.statusCode = 404;
-      throw error;
+      throw new ApiError(404, "User not found");
     }
     return user;
   }
@@ -25,21 +25,28 @@ class UserService {
   async updateUser(id, payload) {
     const existing = await this.userRepository.findById(id);
     if (!existing) {
-      const err = new Error("User not found");
-      err.statusCode = 404;
-      throw err;
+      throw new ApiError(404, "User not found");
     }
 
     if (payload.email && payload.email !== existing.email) {
       const emailUsed = await this.userRepository.findByEmail(payload.email);
       if (emailUsed) {
-        const err = new Error("Email already in use");
-        err.statusCode = 409;
-        throw err;
+        throw new ApiError(409, "Email already in use");
       }
     }
 
     return this.userRepository.updateById(id, payload);
+  }
+
+  async deleteUser(id) {
+    const user = await this.userRepository.findById(id);
+
+    if (!user) {
+      return null;
+    }
+
+    await this.userRepository.softDeleteById(id);
+    return true;
   }
 }
 

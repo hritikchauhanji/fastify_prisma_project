@@ -1,6 +1,7 @@
 import Fastify from "fastify";
 import prismaPlugin from "./plugins/prisma.js";
 import userRoutes from "./modules/user/user.routes.js";
+import { errorHandler } from "./middlewares/error-handler.js";
 
 const app = Fastify({
   logger: true,
@@ -8,6 +9,8 @@ const app = Fastify({
 
 app.register(prismaPlugin);
 app.register(userRoutes, { prefix: "/users" });
+
+app.setErrorHandler(errorHandler);
 
 // Database connectivity check
 app.get("/db-check", async (req, reply) => {
