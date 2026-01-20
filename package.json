@@ -24,6 +24,7 @@
   },
   "homepage": "https://github.com/hritikchauhanji/fastify_prisma_project#readme",
   "dependencies": {
+    "dotenv": "^17.2.3",
     "fastify": "^5.7.1"
   }
 }
