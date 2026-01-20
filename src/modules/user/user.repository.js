@@ -39,6 +39,22 @@ class UserRepository {
       },
     });
   }
+
+  async updateById(id, data) {
+    return this.prisma.user.update({
+      where: { id },
+      data,
+    });
+  }
+
+  async findByEmail(email) {
+    return this.prisma.user.findFirst({
+      where: {
+        email,
+        isDeleted: false,
+      },
+    });
+  }
 }
 
 export { UserRepository };

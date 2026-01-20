@@ -41,6 +41,16 @@ class UserController {
       data: user,
     });
   };
+
+  updateUser = async (request, reply) => {
+    const id = Number(request.params.id);
+    const user = await this.userService.updateUser(id, request.body);
+    reply.send({
+      success: true,
+      data: user,
+      message: "User updated successfully",
+    });
+  };
 }
 
 export { UserController };

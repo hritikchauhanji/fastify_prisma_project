@@ -30,4 +30,28 @@ const getUserByIdSchema = {
   },
 };
 
-export { createUserSchema, getUsersSchema, getUserByIdSchema };
+const updateUserSchema = {
+  params: {
+    type: "object",
+    required: ["id"],
+    properties: {
+      id: { type: "integer", minimum: 1 },
+    },
+  },
+  body: {
+    type: "object",
+    minProperties: 1,
+    properties: {
+      name: { type: "string", minLength: 2 },
+      email: { type: "string", format: "email" },
+    },
+    additionalProperties: false,
+  },
+};
+
+export {
+  createUserSchema,
+  getUsersSchema,
+  getUserByIdSchema,
+  updateUserSchema,
+};

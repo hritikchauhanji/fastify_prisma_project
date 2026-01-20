@@ -5,6 +5,7 @@ import {
   createUserSchema,
   getUsersSchema,
   getUserByIdSchema,
+  updateUserSchema,
 } from "./user.schema.js";
 
 export default async function userRoutes(fastify) {
@@ -19,4 +20,5 @@ export default async function userRoutes(fastify) {
     { schema: getUserByIdSchema },
     userController.getUserById,
   );
+  fastify.put("/:id", { schema: updateUserSchema }, userController.updateUser);
 }
