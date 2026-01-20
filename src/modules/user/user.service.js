@@ -6,7 +6,16 @@ class UserService {
   }
 
   async createUser(payload) {
-    return this.userRepository.create(payload);
+    try {
+      return await this.userRepository.create(payload);
+    } catch (error) {
+      if (error.code === "P2002" && error.meta?.target?.includes("email")) {
+        throw new ApiError(409, "Email already exists");
+      }
+
+      // Unknown error → rethrow
+      throw error;
+    }
   }
 
   async getUsers({ page, limit, search }) {
