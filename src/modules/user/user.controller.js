@@ -11,6 +11,26 @@ class UserController {
       message: "User created successfully",
     });
   };
+
+  getUsers = async (request, reply) => {
+    const { page = 1, limit = 10, search } = request.query;
+    const { items, total } = await this.userService.getUsers({
+      page,
+      limit,
+      search,
+    });
+
+    reply.send({
+      success: true,
+      data: items,
+      meta: {
+        total,
+        page,
+        limit,
+        totalPages: Math.ceil(total / limit),
+      },
+    });
+  };
 }
 
 export { UserController };
